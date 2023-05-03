@@ -1,4 +1,5 @@
-﻿namespace loginform
+﻿
+namespace WB01
 {
     partial class Form1
     {
@@ -28,165 +29,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bday = new System.Windows.Forms.Label();
-            this.signin_id = new System.Windows.Forms.Label();
-            this.signin_pw = new System.Windows.Forms.Label();
-            this.textBox_bday = new System.Windows.Forms.TextBox();
-            this.textBox_ID = new System.Windows.Forms.TextBox();
-            this.textBox_PW = new System.Windows.Forms.TextBox();
-            this.textBox_PW2 = new System.Windows.Forms.TextBox();
-            this.bt_exit = new System.Windows.Forms.Button();
-            this.bt_id_verification = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.Label();
-            this.textBox_name = new System.Windows.Forms.TextBox();
-            this.bt_sign_in = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.chkListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkListBox1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
-            // bday
+            // monthCalendar1
             // 
-            this.bday.AutoSize = true;
-            this.bday.Location = new System.Drawing.Point(173, 109);
-            this.bday.Name = "bday";
-            this.bday.Size = new System.Drawing.Size(67, 15);
-            this.bday.TabIndex = 1;
-            this.bday.Text = "생년월일";
+            this.monthCalendar1.Location = new System.Drawing.Point(43, 63);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 1;
             // 
-            // signin_id
+            // chkListBox2
             // 
-            this.signin_id.AutoSize = true;
-            this.signin_id.Location = new System.Drawing.Point(184, 153);
-            this.signin_id.Name = "signin_id";
-            this.signin_id.Size = new System.Drawing.Size(52, 15);
-            this.signin_id.TabIndex = 2;
-            this.signin_id.Text = "아이디";
-            this.signin_id.Click += new System.EventHandler(this.signin_id_Click);
+            this.chkListBox2.FormattingEnabled = true;
+            this.chkListBox2.Location = new System.Drawing.Point(339, 195);
+            this.chkListBox2.Name = "chkListBox2";
+            this.chkListBox2.Size = new System.Drawing.Size(339, 104);
+            this.chkListBox2.TabIndex = 4;
             // 
-            // signin_pw
+            // button1
             // 
-            this.signin_pw.AutoSize = true;
-            this.signin_pw.Location = new System.Drawing.Point(169, 197);
-            this.signin_pw.Name = "signin_pw";
-            this.signin_pw.Size = new System.Drawing.Size(67, 15);
-            this.signin_pw.TabIndex = 4;
-            this.signin_pw.Text = "비밀번호";
+            this.button1.Font = new System.Drawing.Font("굴림", 10F);
+            this.button1.Location = new System.Drawing.Point(85, 347);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 52);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "월별 리포트";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox_bday
+            // button2
             // 
-            this.textBox_bday.Location = new System.Drawing.Point(253, 99);
-            this.textBox_bday.Name = "textBox_bday";
-            this.textBox_bday.Size = new System.Drawing.Size(169, 25);
-            this.textBox_bday.TabIndex = 6;
-            this.textBox_bday.TextChanged += new System.EventHandler(this.textBox_bday_TextChanged);
+            this.button2.Font = new System.Drawing.Font("굴림", 10F);
+            this.button2.Location = new System.Drawing.Point(393, 347);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(218, 52);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "금융 상품 추천";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox_ID
+            // label1
             // 
-            this.textBox_ID.Location = new System.Drawing.Point(253, 143);
-            this.textBox_ID.Name = "textBox_ID";
-            this.textBox_ID.Size = new System.Drawing.Size(169, 25);
-            this.textBox_ID.TabIndex = 7;
-            this.textBox_ID.TextChanged += new System.EventHandler(this.textBox_ID_TextChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "캘린더";
             // 
-            // textBox_PW
+            // label2
             // 
-            this.textBox_PW.Location = new System.Drawing.Point(253, 187);
-            this.textBox_PW.Name = "textBox_PW";
-            this.textBox_PW.Size = new System.Drawing.Size(169, 25);
-            this.textBox_PW.TabIndex = 8;
-            this.textBox_PW.TextChanged += new System.EventHandler(this.textBox_PW_TextChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(338, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "스케줄러";
             // 
-            // textBox_PW2
+            // label3
             // 
-            this.textBox_PW2.Location = new System.Drawing.Point(252, 231);
-            this.textBox_PW2.Name = "textBox_PW2";
-            this.textBox_PW2.Size = new System.Drawing.Size(169, 25);
-            this.textBox_PW2.TabIndex = 9;
-            this.textBox_PW2.TextChanged += new System.EventHandler(this.textBox_PW2_TextChanged);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(338, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "가계부";
             // 
-            // bt_exit
+            // chkListBox1
             // 
-            this.bt_exit.Location = new System.Drawing.Point(253, 275);
-            this.bt_exit.Name = "bt_exit";
-            this.bt_exit.Size = new System.Drawing.Size(75, 23);
-            this.bt_exit.TabIndex = 10;
-            this.bt_exit.Text = "EXIT";
-            this.bt_exit.UseVisualStyleBackColor = true;
-            this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
-            // 
-            // bt_id_verification
-            // 
-            this.bt_id_verification.Location = new System.Drawing.Point(441, 145);
-            this.bt_id_verification.Name = "bt_id_verification";
-            this.bt_id_verification.Size = new System.Drawing.Size(129, 23);
-            this.bt_id_verification.TabIndex = 12;
-            this.bt_id_verification.Text = "ID verification";
-            this.bt_id_verification.UseVisualStyleBackColor = true;
-            this.bt_id_verification.Click += new System.EventHandler(this.bt_id_verification_Click);
-            // 
-            // name
-            // 
-            this.name.AutoSize = true;
-            this.name.Location = new System.Drawing.Point(199, 68);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(37, 15);
-            this.name.TabIndex = 13;
-            this.name.Text = "이름";
-            this.name.Click += new System.EventHandler(this.name_Click);
-            // 
-            // textBox_name
-            // 
-            this.textBox_name.Location = new System.Drawing.Point(253, 58);
-            this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(168, 25);
-            this.textBox_name.TabIndex = 14;
-            this.textBox_name.TextChanged += new System.EventHandler(this.textBox_name_TextChanged);
-            // 
-            // bt_sign_in
-            // 
-            this.bt_sign_in.Location = new System.Drawing.Point(347, 275);
-            this.bt_sign_in.Name = "bt_sign_in";
-            this.bt_sign_in.Size = new System.Drawing.Size(75, 23);
-            this.bt_sign_in.TabIndex = 15;
-            this.bt_sign_in.Text = "SIGN IN";
-            this.bt_sign_in.UseVisualStyleBackColor = true;
-            this.bt_sign_in.Click += new System.EventHandler(this.bt_sign_in_Click);
+            this.chkListBox1.FormattingEnabled = true;
+            this.chkListBox1.Location = new System.Drawing.Point(339, 57);
+            this.chkListBox1.Name = "chkListBox1";
+            this.chkListBox1.Size = new System.Drawing.Size(339, 104);
+            this.chkListBox1.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.bt_sign_in);
-            this.Controls.Add(this.textBox_name);
-            this.Controls.Add(this.name);
-            this.Controls.Add(this.bt_id_verification);
-            this.Controls.Add(this.bt_exit);
-            this.Controls.Add(this.textBox_PW2);
-            this.Controls.Add(this.textBox_PW);
-            this.Controls.Add(this.textBox_ID);
-            this.Controls.Add(this.textBox_bday);
-            this.Controls.Add(this.signin_pw);
-            this.Controls.Add(this.signin_id);
-            this.Controls.Add(this.bday);
+            this.ClientSize = new System.Drawing.Size(732, 438);
+            this.Controls.Add(this.chkListBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.chkListBox2);
+            this.Controls.Add(this.monthCalendar1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "메인화면";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label bday;
-        private System.Windows.Forms.Label signin_id;
-        private System.Windows.Forms.Label signin_pw;
-        private System.Windows.Forms.TextBox textBox_bday;
-        private System.Windows.Forms.TextBox textBox_ID;
-        private System.Windows.Forms.TextBox textBox_PW;
-        private System.Windows.Forms.TextBox textBox_PW2;
-        private System.Windows.Forms.Button bt_exit;
-        private System.Windows.Forms.Button bt_id_verification;
-        private System.Windows.Forms.Label name;
-        private System.Windows.Forms.TextBox textBox_name;
-        private System.Windows.Forms.Button bt_sign_in;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.CheckedListBox chkListBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckedListBox chkListBox1;
     }
 }
 
