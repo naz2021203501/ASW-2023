@@ -42,7 +42,6 @@
             this.pboxCard.Size = new System.Drawing.Size(263, 186);
             this.pboxCard.TabIndex = 0;
             this.pboxCard.TabStop = false;
-            this.pboxCard.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblImage
             // 
@@ -60,7 +59,6 @@
             this.webCard.Name = "webCard";
             this.webCard.Size = new System.Drawing.Size(663, 269);
             this.webCard.TabIndex = 2;
-            this.webCard.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // textBox2
             // 
