@@ -53,6 +53,7 @@
             this.cboxIncome.Name = "cboxIncome";
             this.cboxIncome.Size = new System.Drawing.Size(261, 304);
             this.cboxIncome.TabIndex = 0;
+            this.cboxIncome.SelectedIndexChanged += new System.EventHandler(this.cboxIncome_SelectedIndexChanged);
             // 
             // gboxExpense
             // 

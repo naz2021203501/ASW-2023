@@ -18,5 +18,10 @@ namespace project
             main = total_main;
             InitializeComponent();
         }
+
+        private void cboxIncome_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

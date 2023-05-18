@@ -21,10 +21,6 @@ namespace project
             txtId.Text = string.Empty;
             txtPw.Text = string.Empty;
             info = userSql.get_IdandPw();
-            foreach (string id in info.Keys)
-            {
-                Console.WriteLine(id, info[id]);
-            }
         }
 
         public Dictionary<string, string> get_info()
@@ -53,8 +49,12 @@ namespace project
 
             if (match_info(id, pw))
             {
-                FormMain main = new FormMain(id);
+                FormMain main = new FormMain(id, userSql);
                 main.Show();
+                // 해당 ID를 이름으로 한 스케줄러 테이블과 가계부 테이블을 가져와서
+                // main form 에 넘겨주기
+                // 서지민이라는 이름을 가진 테이블의 정보를 가져오기
+                // DB -> list, ... 자료구조 형태로 바꿔서 저장, 변경, ...
             }
             else
             {

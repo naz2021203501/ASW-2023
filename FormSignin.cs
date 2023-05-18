@@ -12,7 +12,6 @@ namespace project
         private Dictionary<string, string> info;
         private bool is_unique = false;
         private bool is_same = false;
-
         public FormSignin(FormLogin log_in)
         {
             InitializeComponent();
@@ -93,8 +92,7 @@ namespace project
         private void btnComplete_Click(object sender, EventArgs e)
         {
             string u_name = txtName.Text;
-            DateTime u_dob = Convert.ToDateTime(cmbYear.Text+"-"+cmbMonth.Text+"-"+cmbDate.Text);
-            Console.WriteLine(u_dob);
+            string u_dob = cmbYear.Text+"-"+cmbMonth.Text+"-"+cmbDate.Text;
             bool u_sex = true;
             if (rdoMale.Checked) {
                 u_sex = true;
@@ -129,6 +127,6 @@ namespace project
                     MessageBox.Show("빈칸 없이 모두 입력하세요", "회원가입 실패", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }    
             }
-        }   
+        }
     }
 }
