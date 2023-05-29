@@ -1,4 +1,5 @@
-﻿using System;
+﻿using project.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,9 @@ namespace project
 {
     public partial class FormMain : Form
     {
-        List<Scheduler> schedulers;
-        List<Budget> incomes;
-        List<Budget> outcomes;
+        //List<Scheduler> schedulers;
+        //List<Budget> incomes;
+        //List<Budget> outcomes;
         SQLite main_sql;
         string my_id;
 
@@ -32,74 +33,74 @@ namespace project
 
             string attribute1 = "date TEXT," +
                                 "schedule TEXT," +
-                                "done BOOL";
+                                "done INTEGER";
             string attribute2 = "date TEXT," +
                               "description TEXT," +
                               "amount INTEGER";
+
             main_sql.create_table(ID + "_scheduler", attribute1);
             main_sql.create_table(ID + "_income", attribute2);
             main_sql.create_table(ID + "_outcome", attribute2);
 
+            t_schedule.TableName = ID+"_scheduler";
             t_schedule.Columns.Add("Date", typeof(string));
             t_schedule.Columns.Add("Schedule", typeof(string));
-            t_schedule.Columns.Add("Done", typeof(Boolean));
+            t_schedule.Columns.Add("Done", typeof(bool));
 
+            t_income.TableName = ID + "_income";
             t_income.Columns.Add("Date", typeof(string));
             t_income.Columns.Add("Description", typeof(string));
             t_income.Columns.Add("Amount", typeof(Int32));
 
+            t_outcome.TableName = ID + "_outcome";
             t_outcome.Columns.Add("Date", typeof(string));
             t_outcome.Columns.Add("Description", typeof(string));
             t_outcome.Columns.Add("Amount", typeof(Int32));
 
-            setting_schedule();
-            setting_income();
-            setting_outcome();
+            this.Load += setting_schedule;
+            this.Load += setting_income;
+            this.Load += setting_outcome;
+
+            Calender.DateChanged += setting_schedule;
+            Calender.DateChanged += setting_income;
+            Calender.DateChanged += setting_outcome;
+
+            Console.WriteLine(t_schedule.TableName);
+            Console.WriteLine(t_income.TableName);
+            Console.WriteLine(t_outcome.TableName);
         }
 
-        public void setting_schedule()
+        public void setting_schedule(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
-            schedulers = main_sql.get_schedule($"{my_id}_scheduler", now_date);
             t_schedule.Clear();
-
-            foreach (Scheduler s in schedulers)
-            {
-                t_schedule.Rows.Add(s.get_date(), s.get_schedule(), s.get_done());
-            }
+            t_schedule = main_sql.get_schedule($"{my_id}_scheduler", now_date);
             dgvScheduler.DataSource = t_schedule;
         }
 
-        public void setting_income()
+        public void setting_income(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
-            incomes = main_sql.get_budget($"{my_id}_income", now_date);
             t_income.Clear();
-
-            foreach (Budget b in incomes)
-            {
-                t_income.Rows.Add(b.get_date(), b.get_description(), b.get_amount());
-            }
+            t_income = main_sql.get_budget($"{my_id}_income", now_date);
             dgvIncome.DataSource = t_income;
         }
 
-        public void setting_outcome()
+        public void setting_outcome(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
-            outcomes = main_sql.get_budget($"{my_id}_outcome", now_date);
             t_outcome.Clear();
-
-            foreach (Budget b in outcomes)
-            {
-                t_outcome.Rows.Add(b.get_date(), b.get_description(), b.get_amount());
-            }
+            t_outcome = main_sql.get_budget($"{my_id}_outcome", now_date);
             dgvOutcome.DataSource = t_outcome;
         }
 
         private void gboxSchedular_Enter(object sender, EventArgs e)
         {
-            FormScheduler scheduler = new FormScheduler(this);
+            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
+            FormScheduler scheduler = new FormScheduler(this, main_sql, t_schedule, my_id, now_date);
             scheduler.Show();
+
+            scheduler.FormClosed += setting_schedule;
         }
 
         private void gboxBudget_Enter(object sender, EventArgs e)
@@ -118,13 +119,6 @@ namespace project
         {
             Close();
             Environment.Exit(0);
-        }
-
-        private void Calender_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            setting_schedule();
-            setting_income();
-            setting_outcome();
         }
     }
 }

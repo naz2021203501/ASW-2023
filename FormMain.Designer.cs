@@ -33,15 +33,16 @@
             this.btnRecommend = new System.Windows.Forms.Button();
             this.btnBack2Login = new System.Windows.Forms.Button();
             this.gboxSchedular = new System.Windows.Forms.GroupBox();
-            this.gboxBudget = new System.Windows.Forms.GroupBox();
-            this.dgvIncome = new System.Windows.Forms.DataGridView();
             this.dgvScheduler = new System.Windows.Forms.DataGridView();
+            this.gboxBudget = new System.Windows.Forms.GroupBox();
             this.dgvOutcome = new System.Windows.Forms.DataGridView();
+            this.dgvIncome = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gboxSchedular.SuspendLayout();
-            this.gboxBudget.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScheduler)).BeginInit();
+            this.gboxBudget.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutcome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).BeginInit();
             this.SuspendLayout();
             // 
             // Calender
@@ -49,7 +50,6 @@
             this.Calender.Location = new System.Drawing.Point(8, 9);
             this.Calender.Name = "Calender";
             this.Calender.TabIndex = 0;
-            this.Calender.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.Calender_DateChanged);
             // 
             // btnMonthlyReport
             // 
@@ -85,11 +85,29 @@
             this.gboxSchedular.Controls.Add(this.dgvScheduler);
             this.gboxSchedular.Location = new System.Drawing.Point(268, 9);
             this.gboxSchedular.Name = "gboxSchedular";
-            this.gboxSchedular.Size = new System.Drawing.Size(377, 230);
+            this.gboxSchedular.Size = new System.Drawing.Size(484, 230);
             this.gboxSchedular.TabIndex = 4;
             this.gboxSchedular.TabStop = false;
             this.gboxSchedular.Text = "스케줄";
             this.gboxSchedular.Enter += new System.EventHandler(this.gboxSchedular_Enter);
+            // 
+            // dgvScheduler
+            // 
+            this.dgvScheduler.AllowUserToOrderColumns = true;
+            this.dgvScheduler.AllowUserToResizeColumns = false;
+            this.dgvScheduler.AllowUserToResizeRows = false;
+            this.dgvScheduler.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvScheduler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvScheduler.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dgvScheduler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvScheduler.Location = new System.Drawing.Point(6, 15);
+            this.dgvScheduler.Name = "dgvScheduler";
+            this.dgvScheduler.ReadOnly = true;
+            this.dgvScheduler.RowHeadersWidth = 51;
+            this.dgvScheduler.RowTemplate.Height = 27;
+            this.dgvScheduler.Size = new System.Drawing.Size(472, 207);
+            this.dgvScheduler.TabIndex = 1;
             // 
             // gboxBudget
             // 
@@ -97,48 +115,55 @@
             this.gboxBudget.Controls.Add(this.dgvIncome);
             this.gboxBudget.Location = new System.Drawing.Point(268, 245);
             this.gboxBudget.Name = "gboxBudget";
-            this.gboxBudget.Size = new System.Drawing.Size(377, 230);
+            this.gboxBudget.Size = new System.Drawing.Size(484, 230);
             this.gboxBudget.TabIndex = 5;
             this.gboxBudget.TabStop = false;
             this.gboxBudget.Text = "가계부";
             this.gboxBudget.Enter += new System.EventHandler(this.gboxBudget_Enter);
             // 
-            // dgvIncome
-            // 
-            this.dgvIncome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIncome.Location = new System.Drawing.Point(6, 15);
-            this.dgvIncome.Name = "dgvIncome";
-            this.dgvIncome.RowHeadersWidth = 51;
-            this.dgvIncome.RowTemplate.Height = 27;
-            this.dgvIncome.Size = new System.Drawing.Size(361, 99);
-            this.dgvIncome.TabIndex = 0;
-            // 
-            // dgvScheduler
-            // 
-            this.dgvScheduler.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.dgvScheduler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvScheduler.Location = new System.Drawing.Point(6, 15);
-            this.dgvScheduler.Name = "dgvScheduler";
-            this.dgvScheduler.RowHeadersWidth = 51;
-            this.dgvScheduler.RowTemplate.Height = 27;
-            this.dgvScheduler.Size = new System.Drawing.Size(361, 207);
-            this.dgvScheduler.TabIndex = 1;
-            // 
             // dgvOutcome
             // 
+            this.dgvOutcome.AllowUserToOrderColumns = true;
+            this.dgvOutcome.AllowUserToResizeColumns = false;
+            this.dgvOutcome.AllowUserToResizeRows = false;
+            this.dgvOutcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOutcome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOutcome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOutcome.Location = new System.Drawing.Point(6, 125);
             this.dgvOutcome.Name = "dgvOutcome";
+            this.dgvOutcome.ReadOnly = true;
             this.dgvOutcome.RowHeadersWidth = 51;
             this.dgvOutcome.RowTemplate.Height = 27;
-            this.dgvOutcome.Size = new System.Drawing.Size(361, 99);
+            this.dgvOutcome.Size = new System.Drawing.Size(472, 99);
             this.dgvOutcome.TabIndex = 1;
+            // 
+            // dgvIncome
+            // 
+            this.dgvIncome.AllowUserToOrderColumns = true;
+            this.dgvIncome.AllowUserToResizeColumns = false;
+            this.dgvIncome.AllowUserToResizeRows = false;
+            this.dgvIncome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvIncome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvIncome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIncome.Location = new System.Drawing.Point(6, 15);
+            this.dgvIncome.Name = "dgvIncome";
+            this.dgvIncome.ReadOnly = true;
+            this.dgvIncome.RowHeadersWidth = 51;
+            this.dgvIncome.RowTemplate.Height = 27;
+            this.dgvIncome.Size = new System.Drawing.Size(472, 99);
+            this.dgvIncome.TabIndex = 0;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 481);
+            this.ClientSize = new System.Drawing.Size(764, 481);
             this.Controls.Add(this.gboxBudget);
             this.Controls.Add(this.gboxSchedular);
             this.Controls.Add(this.btnBack2Login);
@@ -148,10 +173,10 @@
             this.Name = "FormMain";
             this.Text = "Main";
             this.gboxSchedular.ResumeLayout(false);
-            this.gboxBudget.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScheduler)).EndInit();
+            this.gboxBudget.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutcome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIncome)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +192,6 @@
         private System.Windows.Forms.DataGridView dgvScheduler;
         private System.Windows.Forms.DataGridView dgvOutcome;
         private System.Windows.Forms.DataGridView dgvIncome;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
