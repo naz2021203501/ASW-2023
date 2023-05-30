@@ -105,7 +105,8 @@ namespace project
 
         private void gboxBudget_Enter(object sender, EventArgs e)
         {
-            FormBudget budget = new FormBudget(this);
+            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
+            FormBudget budget = new FormBudget(this, t_income, t_outcome, now_date);
             budget.Show();
         }
 
@@ -119,6 +120,12 @@ namespace project
         {
             Close();
             Environment.Exit(0);
+        }
+        
+        private void btnMonthlyReport_Click(object sender, EventArgs e) {
+            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
+            FormR fr = new FormR(this, now_date);
+            fr.Show();
         }
     }
 }
