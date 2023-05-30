@@ -59,6 +59,7 @@
             this.btnMonthlyReport.TabIndex = 1;
             this.btnMonthlyReport.Text = "월별 리포트 보고서";
             this.btnMonthlyReport.UseVisualStyleBackColor = true;
+            this.btnMonthlyReport.Click += new System.EventHandler(this.btnMonthlyReport_Click);
             // 
             // btnRecommend
             // 
