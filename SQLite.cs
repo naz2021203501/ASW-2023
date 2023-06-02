@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing;
 using System.Xml.Linq;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Security.Policy;
 
 namespace project
 {
@@ -157,15 +158,17 @@ namespace project
             SQLiteDataReader reader = read_where(table_name, $"date='{date}'");
             DataTable budgets = new DataTable();
             budgets.Columns.Add("Date", typeof(string));
+            budgets.Columns.Add("Category", typeof(string));
             budgets.Columns.Add("Description", typeof(string));
             budgets.Columns.Add("Amount", typeof(Int32));
             while (reader.Read())
             {
                 string b_date = reader.GetString(0);
-                string b_description = reader.GetString(1);
-                int b_amount = reader.GetInt32(2);
+                string b_category = reader.GetString(1);
+                string b_description = reader.GetString(2);
+                int b_amount = reader.GetInt32(3);
 
-                budgets.Rows.Add(b_date, b_description, b_amount);
+                budgets.Rows.Add(b_date, b_category, b_description, b_amount);
             }
             return budgets;
         }
@@ -178,6 +181,11 @@ namespace project
         public void add_schedule(string table_name, string date, string description, int done)
         {
             string attribute = $"'{date}', '{description}', '{done}'";
+            update_table(table_name, attribute);
+        }
+        public void add_budget(string table_name, string date, string newCategory, string newDescription, int newAmount)
+        {
+            string attribute = $"'{date}', '{newCategory}', '{newDescription}', '{newAmount}'";
             update_table(table_name, attribute);
         }
     }

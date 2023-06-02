@@ -7,107 +7,368 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace project
 {
     public partial class FormBudget : Form
     {
         FormMain main;
-        DataTable I_table;
-        DataTable O_table;
+        SQLite sql;
+        DataTable i_table;
+        DataTable o_table;
+        string table_name;
         string date;
-        public FormBudget(FormMain total_main, DataTable I_table, DataTable O_table, string date)
+
+        string[] icategory = { "월급", "용돈", "이자" };
+        string[] ocategory = { "식비", "교통비", "통신비", "의류비", "관리비", "생필품"};
+
+        int count = 0;
+        bool isEdited = false;
+        public void combobox_IndexChanged(object sender, EventArgs e)
         {
-            main = total_main;
+            isEdited = true;
+        }
+        public void textbox_TextChanged(object sender, EventArgs e)
+        {
+            isEdited = true;
+        }
+        public void delete_Budget(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("정말 삭제하시겠습니까?", "스케줄 삭제", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                isEdited = true;
+                Button clickedButton = (Button)sender;
+                Panel parentPanel = (Panel)clickedButton.Parent;
+                parentPanel.Parent.Controls.Remove(parentPanel);
+            }
+        }
+        private Panel create_income()
+        {
+            string name = count++.ToString();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
+            panel.FlowDirection = FlowDirection.LeftToRight;
+            panel.Name = "pnl" + name;
+            panel.Dock = DockStyle.Left;
+            panel.Width = pnlIncome.Width;
+
+            ComboBox combobox = new ComboBox();
+            combobox.Name = "cmbbox" + name;
+            combobox.Dock = DockStyle.Left;
+            combobox.Width = panel.Width / 4;
+            combobox.DataSource = icategory;
+            combobox.SelectedIndexChanged += combobox_IndexChanged;
+
+            TextBox textboxd = new TextBox();
+            textboxd.Name = "txtd" + name;
+            textboxd.Text = name;
+            textboxd.Width = panel.Width / 4 + 23;
+            textboxd.TextChanged += textbox_TextChanged;
+
+            TextBox textboxa = new TextBox();
+            textboxa.Name = "txta" + name;
+            textboxa.Text = name;
+            textboxa.TextAlign = HorizontalAlignment.Right;
+            textboxa.Width = panel.Width / 4 + 11;
+            textboxa.TextChanged += textbox_TextChanged;
+
+            Button deletebutton = new Button();
+            deletebutton.Name = "btn" + name;
+            deletebutton.Text = "-";
+            deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            deletebutton.Dock = DockStyle.Right;
+            deletebutton.Click += delete_Budget;
+
+            panel.Controls.Add(combobox);
+            panel.Controls.Add(textboxd);
+            panel.Controls.Add(textboxa);
+            panel.Controls.Add(deletebutton);
+
+            panel.AutoSize = true; panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            return panel;
+        }
+        private Panel create_income(string category, string description, int amount)
+        {
+            string name = count++.ToString();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
+            panel.FlowDirection = FlowDirection.LeftToRight;
+            panel.Name = "pnl" + name;
+            panel.Dock = DockStyle.Left;
+            panel.Width = pnlIncome.Width;
+
+            ComboBox combobox = new ComboBox();
+            combobox.Name = "cmbbox" + name;
+            combobox.Dock = DockStyle.Left;
+            combobox.Width = panel.Width / 4;
+            combobox.DataSource = icategory;
+            combobox.SelectedItem = category;
+            combobox.SelectedIndexChanged += combobox_IndexChanged;
+
+            TextBox textboxd = new TextBox();
+            textboxd.Name = "txtd" + name;
+            textboxd.Text = description;
+            textboxd.TextChanged += textbox_TextChanged;
+            textboxd.Width = panel.Width / 4 + 23;
+
+            TextBox textboxa = new TextBox();
+            textboxa.Name = "txta" + name;
+            textboxa.Text = amount.ToString();
+            textboxa.TextAlign = HorizontalAlignment.Right;
+            textboxa.Width = panel.Width / 4 + 11;
+
+            Button deletebutton = new Button();
+            deletebutton.Name = "btn" + name;
+            deletebutton.Text = "-";
+            deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            deletebutton.Dock = DockStyle.Right;
+            deletebutton.Click += delete_Budget;
+
+            panel.Controls.Add(combobox);
+            panel.Controls.Add(textboxd);
+            panel.Controls.Add(textboxa);
+            panel.Controls.Add(deletebutton);
+
+            panel.AutoSize = true; panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            return panel;
+        }
+        private Panel create_outcome()
+        {
+            string name = count++.ToString();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
+            panel.FlowDirection = FlowDirection.LeftToRight;
+            panel.Name = "pnl" + name;
+            panel.Dock = DockStyle.Left;
+            panel.Width = pnlIncome.Width;
+
+            ComboBox combobox = new ComboBox();
+            combobox.Name = "cmbbox" + name;
+            combobox.Dock = DockStyle.Left;
+            combobox.Width = panel.Width / 4;
+            combobox.DataSource = ocategory;
+            combobox.SelectedIndexChanged += combobox_IndexChanged;
+
+            TextBox textboxd = new TextBox();
+            textboxd.Name = "txtd" + name;
+            textboxd.Text = name;
+            textboxd.Width = panel.Width / 4 + 23;
+            textboxd.TextChanged += textbox_TextChanged;
+
+            TextBox textboxa = new TextBox();
+            textboxa.Name = "txta" + name;
+            textboxa.Text = name;
+            textboxa.TextAlign = HorizontalAlignment.Right;
+            textboxa.Width = panel.Width / 4 + 11;
+            textboxa.TextChanged += textbox_TextChanged;
+
+            Button deletebutton = new Button();
+            deletebutton.Name = "btn" + name;
+            deletebutton.Text = "-";
+            deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            deletebutton.Dock = DockStyle.Right;
+            deletebutton.Click += delete_Budget;
+
+            panel.Controls.Add(combobox);
+            panel.Controls.Add(textboxd);
+            panel.Controls.Add(textboxa);
+            panel.Controls.Add(deletebutton);
+
+            panel.AutoSize = true; panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            return panel;
+        }
+        private Panel create_outcome(string category, string description, int amount)
+        {
+            string name = count++.ToString();
+            FlowLayoutPanel panel = new FlowLayoutPanel();
+            panel.FlowDirection = FlowDirection.LeftToRight;
+            panel.Name = "pnl" + name;
+            panel.Dock = DockStyle.Left;
+            panel.Width = pnlOutcome.Width;
+
+            ComboBox combobox = new ComboBox();
+            combobox.Name = "cmbbox" + name;
+            combobox.SelectedItem = category;
+            combobox.Dock = DockStyle.Left;
+            combobox.Width = panel.Width / 4;
+            combobox.DataSource = ocategory;
+            combobox.SelectedIndexChanged += combobox_IndexChanged;
+
+            TextBox textboxd = new TextBox();
+            textboxd.Name = "txtd" + name;
+            textboxd.Text = description;
+            textboxd.TextChanged += textbox_TextChanged;
+            textboxd.Width = panel.Width / 4 + 23;
+
+            TextBox textboxa = new TextBox();
+            textboxa.Name = "txta" + name;
+            textboxa.Text = amount.ToString();
+            textboxa.TextAlign = HorizontalAlignment.Right;
+            textboxa.Width = panel.Width / 4 + 11;
+
+            Button deletebutton = new Button();
+            deletebutton.Name = "btn" + name;
+            deletebutton.Text = "-";
+            deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            deletebutton.Dock = DockStyle.Right;
+            deletebutton.Click += delete_Budget;
+
+            panel.Controls.Add(combobox);
+            panel.Controls.Add(textboxd);
+            panel.Controls.Add(textboxa);
+            panel.Controls.Add(deletebutton);
+
+            panel.AutoSize = true; panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            return panel;
+        }
+        public FormBudget(FormMain total_main, SQLite main_sql, DataTable t_income, DataTable t_outcome, string my_id, string date)
+        {
             InitializeComponent();
+            this.main = total_main;
+            this.sql = main_sql;
+            this.i_table = t_income;
+            this.o_table = t_outcome;
+            this.table_name = my_id;
+            this.date = date; lblDate.Text = $"[{date}]";
+            this.FormClosing += save_data;
 
-            this.I_table = I_table;
-            this.O_table = O_table;
-            this.date = date;
-            label3.Text = date;
+            pnlIncome.FlowDirection = FlowDirection.TopDown;
+            pnlIncome.WrapContents = false;
 
-            dgv_income.Rows.Clear();
-            dgv_income.DataSource = I_table;
+            pnlOutcome.FlowDirection = FlowDirection.TopDown;
+            pnlOutcome.WrapContents = false;
 
-            dgv_outcome.Rows.Clear();
-            dgv_outcome.DataSource = O_table;
-
-        }
-
-        private void a_btn_Click(object sender, EventArgs e)
-        {
-            string tmp1 = txtD.Text;
-            string tmp2 = txtA.Text;
-            if (!string.IsNullOrEmpty(tmp1)|| !string.IsNullOrEmpty(tmp2))
+            if (i_table.Rows.Count > 0)
             {
-                if (income_btn.Checked) {
-                    DataRow newRow = I_table.NewRow();
-                    newRow["Date"] = date; newRow["Description"] = tmp1; newRow["Amount"] = tmp2;
-                    I_table.Rows.Add(newRow);
-                }
-                else if (outcome_btn.Checked) {
-                    DataRow newRow = O_table.NewRow();
-                    newRow["Date"] = date; newRow["Description"] = tmp1; newRow["Amount"] = tmp2;
-                    O_table.Rows.Add(newRow);
-                }
-            }
-            txtD.Text = "";
-            txtA.Text = "";
-        }
-
-        private void m_btn_Click(object sender, EventArgs e)
-        {
-            if (income_btn.Checked)
-            {
-                int selectedIndex = dgv_income.CurrentRow.Index;
-                if (selectedIndex >= 0 && selectedIndex < I_table.Rows.Count)
+                foreach (DataRow row in i_table.Rows)
                 {
-                    string newD = txtD.Text;
-                    string newA = txtA.Text;
-                    I_table.Rows[selectedIndex]["Description"] = newD;
-                    I_table.Rows[selectedIndex]["Amount"] = newA;
+                    string i_category = row.Field<string>("Category");
+                    string i_description = row.Field<string>("Description");
+                    int i_amount = row.Field<Int32>("Amount");
+                    Panel pnl = create_income(i_category, i_description, i_amount);
+                    pnlIncome.Controls.Add(pnl);
                 }
             }
-            else if (outcome_btn.Checked)
+
+            if(o_table.Rows.Count > 0)
             {
-                int selectedIndex = dgv_outcome.CurrentRow.Index;
-                if (selectedIndex >= 0 && selectedIndex < O_table.Rows.Count)
+                foreach (DataRow row in o_table.Rows)
                 {
-                    string newD = txtD.Text;
-                    string newA = txtA.Text;
-                    O_table.Rows[selectedIndex]["Description"] = newD;
-                    O_table.Rows[selectedIndex]["Amount"] = newA;
+                    string o_category = row.Field<string>("Category");
+                    string o_description = row.Field<string>("Description");
+                    int o_amount = row.Field<Int32>("Amount");
+                    Panel pnl = create_outcome(o_category, o_description, o_amount);
+                    pnlOutcome.Controls.Add(pnl);
                 }
             }
-            txtD.Text = "";
-            txtA.Text = "";
         }
-
-        private void d_btn_Click(object sender, EventArgs e)
+        private void btnIPlus_Click(object sender, EventArgs e)
         {
-            if (income_btn.Checked)
-            {
-                int selectedIndex = dgv_income.CurrentRow.Index;
-                if (selectedIndex >= 0 && selectedIndex < I_table.Rows.Count)
-                {
-                    I_table.Rows.RemoveAt(selectedIndex);
-                }
-            }
-            else if (outcome_btn.Checked)
-            {
-                int selectedIndex = dgv_outcome.CurrentRow.Index;
-                if (selectedIndex >= 0 && selectedIndex < O_table.Rows.Count)
-                {
-                    O_table.Rows.RemoveAt(selectedIndex);
-                }
-            }
-            txtD.Text = "";
-            txtA.Text = "";
+            isEdited = true;
+            Panel pnl = create_income();
+            pnlIncome.Controls.Add(pnl);
         }
-
-        private void FormBudget_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnOPlus_Click(object sender, EventArgs e)
         {
+            isEdited = true;
+            Panel pnl = create_outcome();
+            pnlOutcome.Controls.Add(pnl);
+        }
+        private bool check_save()
+        {
+            return isEdited;
+        }
+        public void save_data(object sender, EventArgs e)
+        {
+            if (check_save())
+            {
+                sql.delete_data(table_name + "_income", date);
+                if (pnlIncome.Controls.Count > 0)
+                {
+                    foreach (Panel pnl in pnlIncome.Controls)
+                    {
+                        if (pnlIncome.Controls.Count > 0)
+                        {
+                            string newCategory = string.Empty;
+                            string newDescription = string.Empty;
+                            int newAmount = 0;
+                            bool isFirst = false;
+                            foreach (Control control in pnl.Controls)
+                            {
+                                if (control is ComboBox combobox)
+                                {
+                                    newCategory = combobox.SelectedItem.ToString();
+                                }
+                                if (control is TextBox textbox)
+                                {
+                                    if (isFirst == false)
+                                    {
+                                        isFirst = true;
+                                        newDescription = textbox.Text;
+                                    }
+                                    else
+                                    {
+                                        string tmpAmount = textbox.Text.Replace("$", "").Replace(",", "");
+                                        newAmount = Convert.ToInt32(tmpAmount);
+                                    }
+                                }
+                            }
+                            if (newDescription != string.Empty && newAmount > 0)
+                            {
+                                sql.add_budget(table_name + "_income", date, newCategory, newDescription, newAmount);
+                            }
+                        }
+                    }
+                }
 
+                sql.delete_data(table_name + "_outcome", date);
+                if (pnlOutcome.Controls.Count > 0)
+                {
+                    foreach (Panel pnl in pnlOutcome.Controls)
+                    {
+                        if (pnlOutcome.Controls.Count > 0)
+                        {
+                            string newCategory = string.Empty;
+                            string newDescription = string.Empty;
+                            int newAmount = 0;
+                            bool isFirst = false;
+                            foreach (Control control in pnl.Controls)
+                            {
+                                if (control is ComboBox combobox)
+                                {
+                                    newCategory = combobox.SelectedItem.ToString();
+                                }
+                                if (control is TextBox textbox)
+                                {
+                                    if (isFirst == false)
+                                    {
+                                        isFirst = true;
+                                        newDescription = textbox.Text;
+                                    }
+                                    else
+                                    {
+                                        string tmpAmount = textbox.Text.Replace("$", "").Replace(",", "");
+                                        newAmount = Convert.ToInt32(tmpAmount);
+                                    }
+                                }
+                            }
+                            if (newDescription != string.Empty && newAmount > 0)
+                            {
+                                sql.add_budget(table_name + "_outcome", date, newCategory, newDescription, newAmount);
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("변경사항을 저장했습니다", "스케줄 저장", MessageBoxButtons.OK);
+            }
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

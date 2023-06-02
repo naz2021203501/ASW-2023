@@ -17,6 +17,25 @@ namespace project
 
         int count = 0;
         bool isEdited = false;
+        private void textbox_TextChanged(object sender, EventArgs e)
+        {
+            isEdited = true;
+        }
+        private void checkbox_StateChanged(object sender, EventArgs e)
+        {
+            isEdited = true;
+        }
+        public void delete_Schedule(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("정말 삭제하시겠습니까?", "스케줄 삭제", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                isEdited = true;
+                Button clickedButton = (Button)sender;
+                Panel parentPanel = (Panel)clickedButton.Parent;
+                parentPanel.Parent.Controls.Remove(parentPanel);
+            }
+        }
         public Panel create_schedule()
         {
             string name = count++.ToString();
@@ -43,7 +62,7 @@ namespace project
             deletebutton.Text = "-";
             deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             deletebutton.Dock = DockStyle.Right;
-            deletebutton.Click += delet_Schedule;
+            deletebutton.Click += delete_Schedule;
 
             panel.Controls.Add(checkbox);
             panel.Controls.Add(textbox);
@@ -80,7 +99,7 @@ namespace project
             deletebutton.Text = "-";
             deletebutton.AutoSize = true; deletebutton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             deletebutton.Dock = DockStyle.Right;
-            deletebutton.Click += delet_Schedule;
+            deletebutton.Click += delete_Schedule;
 
             panel.Controls.Add(checkbox);
             panel.Controls.Add(textbox);
@@ -89,7 +108,7 @@ namespace project
             panel.AutoSize = true; panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             return panel;
-        }
+        }    
         public FormScheduler(FormMain total_form, SQLite main_sql, DataTable s_table, string ID, string date)
         {
             InitializeComponent();
@@ -99,9 +118,6 @@ namespace project
             this.table_name = ID + "_scheduler";
             this.date = date; lblDate.Text = $"[{date}]";
             this.FormClosing += save_data;
-
-            dgvSchedule.Rows.Clear();
-            dgvSchedule.DataSource = s_table;
 
             pnlSchedule.FlowDirection = FlowDirection.TopDown;
             pnlSchedule.WrapContents = false;
@@ -115,7 +131,7 @@ namespace project
                     Panel pnl = create_schedule(s_text, s_bool);
                     pnlSchedule.Controls.Add(pnl);
                 }
-            }
+            }         
         }
         private void btnPlus_Click(object sender, EventArgs e)
         {
@@ -123,25 +139,6 @@ namespace project
             Panel pnl = create_schedule();  
             pnlSchedule.Controls.Add(pnl);
             pnlSchedule.Controls.SetChildIndex(pnl, count);
-        }
-        private void textbox_TextChanged(object sender, EventArgs e)
-        {
-           isEdited = true;
-        }
-        private void checkbox_StateChanged(object sender, EventArgs e)
-        {
-            isEdited = true;
-        }
-        public void delet_Schedule(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("정말 삭제하시겠습니까?", "스케줄 삭제", MessageBoxButtons.YesNo);
-            if(result == DialogResult.Yes)
-            {
-                isEdited = true;
-                Button clickedButton = (Button)sender;
-                Panel parentPanel = (Panel)clickedButton.Parent;
-                parentPanel.Parent.Controls.Remove(parentPanel);
-            } 
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -169,23 +166,18 @@ namespace project
                                 {
                                     if (checkbox.Checked == true) {
                                         newDone = 1;
-                                        Console.WriteLine($"체크박스 상태(if구문 안에서)! : {newDone}");
                                     }
                                     else
                                     {
                                         newDone = 0;
-                                        Console.WriteLine($"체크박스 상태(if구문 안에서)! : {newDone}");
                                     }
-                                    Console.WriteLine($"체크박스 상태! : {newDone}");
                                 }
                                 if (control is TextBox textbox){
                                     newSchedule = textbox.Text;
-                                    Console.WriteLine($"텍스트박스를 찾음! : {newSchedule}");
                                 }
                             }
                             if (newSchedule != string.Empty)
                             {
-                                Console.WriteLine($"저장하려고 함 ! - {newSchedule} : {newDone}");
                                 sql.add_schedule(table_name, date, newSchedule, newDone);
                             }
                         }

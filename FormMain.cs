@@ -13,9 +13,6 @@ namespace project
 {
     public partial class FormMain : Form
     {
-        //List<Scheduler> schedulers;
-        //List<Budget> incomes;
-        //List<Budget> outcomes;
         SQLite main_sql;
         string my_id;
 
@@ -35,6 +32,7 @@ namespace project
                                 "schedule TEXT," +
                                 "done INTEGER";
             string attribute2 = "date TEXT," +
+                              "category TEXT," +
                               "description TEXT," +
                               "amount INTEGER";
 
@@ -49,11 +47,13 @@ namespace project
 
             t_income.TableName = ID + "_income";
             t_income.Columns.Add("Date", typeof(string));
+            t_income.Columns.Add("Category", typeof(string));
             t_income.Columns.Add("Description", typeof(string));
             t_income.Columns.Add("Amount", typeof(Int32));
 
             t_outcome.TableName = ID + "_outcome";
             t_outcome.Columns.Add("Date", typeof(string));
+            t_outcome.Columns.Add("Category", typeof(string));
             t_outcome.Columns.Add("Description", typeof(string));
             t_outcome.Columns.Add("Amount", typeof(Int32));
 
@@ -64,10 +64,6 @@ namespace project
             Calender.DateChanged += setting_schedule;
             Calender.DateChanged += setting_income;
             Calender.DateChanged += setting_outcome;
-
-            Console.WriteLine(t_schedule.TableName);
-            Console.WriteLine(t_income.TableName);
-            Console.WriteLine(t_outcome.TableName);
         }
 
         public void setting_schedule(object sender, EventArgs e)
@@ -106,8 +102,11 @@ namespace project
         private void gboxBudget_Enter(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
-            FormBudget budget = new FormBudget(this, t_income, t_outcome, now_date);
+            FormBudget budget = new FormBudget(this, main_sql, t_income, t_outcome, my_id, now_date);
             budget.Show();
+
+            budget.FormClosed += setting_income;
+            budget.FormClosed += setting_outcome;
         }
 
         private void btnRecommend_Click(object sender, EventArgs e)
@@ -121,8 +120,9 @@ namespace project
             Close();
             Environment.Exit(0);
         }
-        
-        private void btnMonthlyReport_Click(object sender, EventArgs e) {
+
+        private void btnMonthlyReport_Click(object sender, EventArgs e)
+        {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
             FormR fr = new FormR(this, now_date);
             fr.Show();
