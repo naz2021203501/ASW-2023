@@ -93,6 +93,8 @@
             // 
             // dgvScheduler
             // 
+            this.dgvScheduler.AllowUserToAddRows = false;
+            this.dgvScheduler.AllowUserToDeleteRows = false;
             this.dgvScheduler.AllowUserToOrderColumns = true;
             this.dgvScheduler.AllowUserToResizeColumns = false;
             this.dgvScheduler.AllowUserToResizeRows = false;
@@ -106,7 +108,7 @@
             this.dgvScheduler.ReadOnly = true;
             this.dgvScheduler.RowHeadersWidth = 51;
             this.dgvScheduler.RowTemplate.Height = 27;
-            this.dgvScheduler.Size = new System.Drawing.Size(472, 207);
+            this.dgvScheduler.Size = new System.Drawing.Size(472, 209);
             this.dgvScheduler.TabIndex = 1;
             // 
             // gboxBudget
@@ -123,7 +125,8 @@
             // 
             // dgvOutcome
             // 
-            this.dgvOutcome.AllowUserToOrderColumns = true;
+            this.dgvOutcome.AllowUserToAddRows = false;
+            this.dgvOutcome.AllowUserToDeleteRows = false;
             this.dgvOutcome.AllowUserToResizeColumns = false;
             this.dgvOutcome.AllowUserToResizeRows = false;
             this.dgvOutcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -140,7 +143,8 @@
             // 
             // dgvIncome
             // 
-            this.dgvIncome.AllowUserToOrderColumns = true;
+            this.dgvIncome.AllowUserToAddRows = false;
+            this.dgvIncome.AllowUserToDeleteRows = false;
             this.dgvIncome.AllowUserToResizeColumns = false;
             this.dgvIncome.AllowUserToResizeRows = false;
             this.dgvIncome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
