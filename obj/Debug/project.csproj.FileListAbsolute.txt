@@ -31,3 +31,36 @@ C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\bin\Deb
 C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\bin\Debug\EntityFramework.xml
 C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\bin\Debug\System.Data.SQLite.xml
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.csprojAssemblyReference.cache
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormBudget.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormFPR.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormScheduler.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormSignin.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormLogin.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormMain.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.Properties.Resources.resources
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.exe
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.pdb
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.FormR.resources
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\project.exe.config
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\project.exe
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\project.pdb
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\EntityFramework.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Buffers.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Data.SQLite.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Memory.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\EntityFramework.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Buffers.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Data.SQLite.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Memory.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.csproj.CopyComplete

@@ -57,7 +57,7 @@ namespace project
             combobox.Name = "cmbbox" + name;
             combobox.Dock = DockStyle.Left;
             combobox.Width = panel.Width / 4;
-            combobox.DataSource = icategory;
+            combobox.DataSource = (string[])icategory.Clone();
             combobox.SelectedIndexChanged += combobox_IndexChanged;
 
             TextBox textboxd = new TextBox();
@@ -103,7 +103,7 @@ namespace project
             combobox.Dock = DockStyle.Left;
             combobox.Width = panel.Width / 4;
             combobox.DataSource = icategory;
-            combobox.SelectedItem = category;
+            combobox.SelectedItem = (string[])icategory.Clone();
             combobox.SelectedIndexChanged += combobox_IndexChanged;
 
             TextBox textboxd = new TextBox();
@@ -147,7 +147,7 @@ namespace project
             combobox.Name = "cmbbox" + name;
             combobox.Dock = DockStyle.Left;
             combobox.Width = panel.Width / 4;
-            combobox.DataSource = ocategory;
+            combobox.DataSource = (string[])ocategory.Clone();
             combobox.SelectedIndexChanged += combobox_IndexChanged;
 
             TextBox textboxd = new TextBox();
@@ -193,7 +193,7 @@ namespace project
             combobox.SelectedItem = category;
             combobox.Dock = DockStyle.Left;
             combobox.Width = panel.Width / 4;
-            combobox.DataSource = ocategory;
+            combobox.DataSource = (string[])ocategory.Clone();
             combobox.SelectedIndexChanged += combobox_IndexChanged;
 
             TextBox textboxd = new TextBox();
