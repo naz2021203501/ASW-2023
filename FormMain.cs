@@ -114,7 +114,11 @@ namespace project
             FormFPR fpr = new FormFPR(this);
             fpr.Show();
         }
-
+        private void btnMonthlyReport_Click(object sender, EventArgs e)
+        {
+            FormReport report = new FormReport(this, t_income, t_outcome, my_id);
+            report.Show();
+        }
         private void btnBack2Login_Click(object sender, EventArgs e)
         {
             Close();
