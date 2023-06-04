@@ -10,32 +10,59 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace project
 {
-    public partial class Form1 : Form
+    public partial class FormR : Form
     {
-        public Form1()
+        FormMain main;
+        DataSet I_ds = new DataSet();
+        DataSet O_ds = new DataSet();
+        public FormR(FormMain total_main, string date, DataSet I_ds, DataSet O_ds)
         {
             InitializeComponent();
+            main = total_main;
+
+            label6.Text = date;
+        }
+        private void r_button_Click(object sender, EventArgs e)
+        {
+            re_chart();
         }
 
-        Func<ChartPoint, string> labelPoint = charpoint => string.Format("{0} ({1:P)", charpoint.Y, charpoint.Participation);
-
-        private void button1_Click(object sender, EventArgs e)
+        private void i_button_Click(object sender, EventArgs e)
         {
-            SeriesCollection series = new SeriesCollection();
-            foreach (var obj in data.Revenue)
-                series.Add(new PieSeries() { Title = obj.Name.ToString(), Values = new ChartValues<int> { obj.Total }, DataLabels = true, LabelPoint = labelPoint });
-            pieChart1.Series = series;
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            pieChart1.LegendLocation = LegendLocation.Bottom;
+            re_chart();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void o_button_Click(object sender, EventArgs e)
         {
+            re_chart();
+        }
 
+        void re_chart()
+        {
+            if (i_button.Checked)
+            {
+                var grplist = this.I_ds.Data.GroupBy(t => t.Grp);
+                chart1.Series[0].Points.Clear();
+                foreach (var item in grplist)
+                {
+                    var grpName = item.FirstOrDefault().Grp;
+                    var grpSum = item.Sum(t => t.Cr);
+                    chart1.Series[0].Points.AddXY(grpName, grpSum);
+                }
+            }
+            else if (o_button.Checked)
+            {
+                var grplist = this.O_ds.Data.GroupBy(t => t.Grp);
+                chart1.Series[0].Points.Clear();
+                foreach (var item in grplist)
+                {
+                    var grpName = item.FirstOrDefault().Grp;
+                    var grpSum = item.Sum(t => t.Cr);
+                    chart1.Series[0].Points.AddXY(grpName, grpSum);
+                }
+            }
         }
     }
 }

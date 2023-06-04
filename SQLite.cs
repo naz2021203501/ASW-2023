@@ -24,7 +24,7 @@ namespace project
 
         public SQLite()
         {
-            connect_db(@"Data Source=C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\DB\AWS.db");
+            connect_db(@"Data Source=C:\Users\진\source\repos\ASW-2023E\DB\AWS.db");
         }
         // DB 연결 및 연결 끊기
         public void connect_db(string path)
