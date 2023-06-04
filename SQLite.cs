@@ -188,5 +188,19 @@ namespace project
             string attribute = $"'{date}', '{newCategory}', '{newDescription}', '{newAmount}'";
             update_table(table_name, attribute);
         }
+
+        public DataSet get_DataSet(string table_name)
+        {
+            DataSet ds = new DataSet();
+
+            using (var conn = new SQLiteConnection(con))
+            {
+                string query = "SELECT * FROM {table_name}";
+                var adpt = new SQLiteDataAdapter(query, con);
+                adpt.Fill(ds);
+            }
+
+            return ds;
+        }
     }
 }

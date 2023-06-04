@@ -116,8 +116,11 @@ namespace project
         }
         private void btnMonthlyReport_Click(object sender, EventArgs e)
         {
-            FormReport report = new FormReport(this, t_income, t_outcome, my_id);
-            report.Show();
+            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
+            var income_dataSet = main_sql.get_DataSet($"{my_id}_income");
+            var outcome_dataSet = main_sql.get_DataSet($"{my_id}_outcome");
+            FormR fr = new FormR(this, now_date, income_dataSet, outcome_dataSet);
+            fr.Show();
         }
         private void btnBack2Login_Click(object sender, EventArgs e)
         {
