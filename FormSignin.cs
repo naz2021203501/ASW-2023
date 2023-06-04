@@ -27,21 +27,36 @@ namespace project
                 year[i-1900]=i.ToString();
             }
 
-            cmbYear.Items.AddRange(year);
+            cmbYear.DataSource = year;
             cmbYear.SelectedIndex = 0;
             
             string[] month = new string[12];
             for (int i = 1; i <= 12; i++)
             {
-                month[i-1] = i.ToString();
+                if (i < 10)
+                {
+                    month[i - 1] = "0" + i.ToString();
+                }
+                else
+                {
+                    month[i - 1] = i.ToString();
+                }
             }
-            cmbMonth.Items.AddRange(month);
+            cmbMonth.DataSource = month;
             cmbMonth.SelectedIndex = 0;
 
             string[] date = new string[31];
             for (int i = 1; i <= 31; i++)
             {
-                date[i - 1] = i.ToString();
+                if (i < 10)
+                {
+                    date[i - 1] = "0" + i.ToString();
+                }
+                else
+                {
+                    date[i - 1] = i.ToString();
+                }
+                
             }
             cmbDate.Items.AddRange(date);
             cmbDate.SelectedIndex = 0;
@@ -70,16 +85,44 @@ namespace project
         {
             is_unique = false;
         }
-        private void txtCheckPw_Enter(object sender, EventArgs e)
+        private void btnCheck_Click(object sender, EventArgs e)
         {
-            if(txtPw.Text == txtCheckPw.Text)
+            if (txtPw.Text != string.Empty && txtCheckPw.Text != string.Empty)
             {
-                is_same = true;
+                if (txtPw.Text == txtCheckPw.Text)
+                {
+                    is_same = true;
+                    MessageBox.Show("비밀번호가 일치합니다!", "비밀번호 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    is_same = false;
+                    MessageBox.Show("비밀번호를 확인하세요", "비밀번호 확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+        }
+        private void btnVisible_Click(object sender, EventArgs e)
+        {
+            if (btnVisible.Text == "Visible")
             {
-                MessageBox.Show("비밀번호를 확인하세요", "비밀번호 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtPw.PasswordChar = '\0';
+                txtCheckPw.PasswordChar = '\0';
+                btnVisible.Text = "Invisible";
             }
+            else if (btnVisible.Text == "Invisible")
+            {
+                txtPw.PasswordChar = '*';
+                txtCheckPw.PasswordChar = '*';
+                btnVisible.Text = "Visible";
+            }
+        }
+        private void txtPw_TextChanged(object sender, EventArgs e)
+        {
+            is_unique = false;
+        }
+        private void txtCheckPw_TextChanged(object sender, EventArgs e)
+        {
+            is_unique = false;
         }
         public bool check_ID()
         {

@@ -24,7 +24,7 @@ namespace project
 
         public SQLite()
         {
-            connect_db(@"Data Source=C:\Users\진\source\repos\ASW-2023E\DB\AWS.db");
+            connect_db(@"Data Source=C:\Users\sjmra\Desktop\Visual Studio\응용소프트웨어실습\project\DB\AWS.db");
         }
         // DB 연결 및 연결 끊기
         public void connect_db(string path)
@@ -172,6 +172,22 @@ namespace project
             }
             return budgets;
         }
+
+        public Dictionary<string, int> get_report(string table_name, string part_date)
+        {
+            Dictionary<string, int> monthly = new Dictionary<string, int>();
+            string attribute = $"category, SUM(amount)";
+            string condition = $"date LIKE '{part_date}%' GROUP BY category";
+            SQLiteDataReader reader = read_select_where(table_name, attribute, condition);
+            
+            while (reader.Read())
+            {
+                string category = reader[0].ToString();
+                int sum = Convert.ToInt32(reader[1]);
+                monthly[category] = sum;
+            }
+            return monthly;
+        }
         public void add_user(string u_name, string u_dob, bool u_sex, string u_email, string u_ph, string u_id, string u_pw)
         {
             string table_name = "user";
@@ -189,18 +205,18 @@ namespace project
             update_table(table_name, attribute);
         }
 
-        public DataSet get_DataSet(string table_name)
-        {
-            DataSet ds = new DataSet();
+        //public DataSet get_DataSet(string table_name)
+        //{
+        //    DataSet ds = new DataSet();
 
-            using (var conn = new SQLiteConnection(con))
-            {
-                string query = "SELECT * FROM {table_name}";
-                var adpt = new SQLiteDataAdapter(query, con);
-                adpt.Fill(ds);
-            }
+        //    using (var conn = new SQLiteConnection(con))
+        //    {
+        //        string query = "SELECT * FROM {table_name}";
+        //        var adpt = new SQLiteDataAdapter(query, con);
+        //        adpt.Fill(ds);
+        //    }
 
-            return ds;
-        }
+        //    return ds;
+        //}
     }
 }

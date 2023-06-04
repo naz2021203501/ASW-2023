@@ -65,7 +65,6 @@ namespace project
             Calender.DateChanged += setting_income;
             Calender.DateChanged += setting_outcome;
         }
-
         public void setting_schedule(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
@@ -73,7 +72,6 @@ namespace project
             t_schedule = main_sql.get_schedule($"{my_id}_scheduler", now_date);
             dgvScheduler.DataSource = t_schedule;
         }
-
         public void setting_income(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
@@ -81,7 +79,6 @@ namespace project
             t_income = main_sql.get_budget($"{my_id}_income", now_date);
             dgvIncome.DataSource = t_income;
         }
-
         public void setting_outcome(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
@@ -89,7 +86,6 @@ namespace project
             t_outcome = main_sql.get_budget($"{my_id}_outcome", now_date);
             dgvOutcome.DataSource = t_outcome;
         }
-
         private void gboxSchedular_Enter(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
@@ -98,7 +94,6 @@ namespace project
 
             scheduler.FormClosed += setting_schedule;
         }
-
         private void gboxBudget_Enter(object sender, EventArgs e)
         {
             string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
@@ -108,20 +103,20 @@ namespace project
             budget.FormClosed += setting_income;
             budget.FormClosed += setting_outcome;
         }
+        private void btnMonthlyReport_Click(object sender, EventArgs e)
+        {
+            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
+            //var income_dataSet = main_sql.get_DataSet($"{my_id}_income");
+            //var outcome_dataSet = main_sql.get_DataSet($"{my_id}_outcome");
 
+            FormR monthlyreport = new FormR(this, main_sql, now_date, my_id);
+            monthlyreport.Show();
+        }
         private void btnRecommend_Click(object sender, EventArgs e)
         {
             FormFPR fpr = new FormFPR(this);
             fpr.Show();
-        }
-        private void btnMonthlyReport_Click(object sender, EventArgs e)
-        {
-            string now_date = Calender.SelectionRange.Start.ToString().Substring(0, 10);
-            var income_dataSet = main_sql.get_DataSet($"{my_id}_income");
-            var outcome_dataSet = main_sql.get_DataSet($"{my_id}_outcome");
-            FormR fr = new FormR(this, now_date, income_dataSet, outcome_dataSet);
-            fr.Show();
-        }
+        }       
         private void btnBack2Login_Click(object sender, EventArgs e)
         {
             Close();
