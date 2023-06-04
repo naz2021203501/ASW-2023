@@ -189,18 +189,17 @@ namespace project
             update_table(table_name, attribute);
         }
 
-        public DataSet get_DataSet(string table_name)
+        public int[] get_incomesumlist(string my_id, string now_date)
         {
-            DataSet ds = new DataSet();
-
-            using (var conn = new SQLiteConnection(con))
-            {
-                string query = "SELECT * FROM {table_name}";
-                var adpt = new SQLiteDataAdapter(query, con);
-                adpt.Fill(ds);
+            int[] sumlist;
+            DataTable t_income;
+            t_income = this.get_budget($"{my_id}_income", now_date);
+            while () {
+                DataRow dr = t_income.Rows.Find("Category");
+                int rowIdx = t_income.Rows.IndexOf(dr);
+                sumlist = t_income.DefaultView.ToTable(false, "Amount").Rows[rowIdx];
             }
-
-            return ds;
+            return sumlist;
         }
     }
 }

@@ -17,6 +17,8 @@ namespace project
         FormMain main;
         DataSet I_ds = new DataSet();
         DataSet O_ds = new DataSet();
+
+
         public FormR(FormMain total_main, string date, DataSet I_ds, DataSet O_ds)
         {
             InitializeComponent();
@@ -29,39 +31,25 @@ namespace project
             re_chart();
         }
 
-        private void i_button_Click(object sender, EventArgs e)
+        private void i_rbtn_Click(object sender, EventArgs e)
         {
             re_chart();
         }
 
-        private void o_button_Click(object sender, EventArgs e)
+        private void o_rbtn_Click(object sender, EventArgs e)
         {
             re_chart();
         }
 
         void re_chart()
         {
-            if (i_button.Checked)
+            if (i_rbtn.Checked)
             {
-                var grplist = this.I_ds.Data.GroupBy(t => t.Grp);
-                chart1.Series[0].Points.Clear();
-                foreach (var item in grplist)
-                {
-                    var grpName = item.FirstOrDefault().Grp;
-                    var grpSum = item.Sum(t => t.Cr);
-                    chart1.Series[0].Points.AddXY(grpName, grpSum);
-                }
+                
             }
-            else if (o_button.Checked)
+            else if (o_rbtn.Checked)
             {
-                var grplist = this.O_ds.Data.GroupBy(t => t.Grp);
-                chart1.Series[0].Points.Clear();
-                foreach (var item in grplist)
-                {
-                    var grpName = item.FirstOrDefault().Grp;
-                    var grpSum = item.Sum(t => t.Cr);
-                    chart1.Series[0].Points.AddXY(grpName, grpSum);
-                }
+                
             }
         }
     }

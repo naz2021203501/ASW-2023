@@ -31,8 +31,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.i_button = new System.Windows.Forms.Button();
-            this.o_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -44,47 +42,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.r_button = new System.Windows.Forms.Button();
+            this.i_rbtn = new System.Windows.Forms.RadioButton();
+            this.o_rbtn = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // i_button
-            // 
-            this.i_button.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.i_button.Location = new System.Drawing.Point(3, 3);
-            this.i_button.Name = "i_button";
-            this.i_button.Size = new System.Drawing.Size(180, 73);
-            this.i_button.TabIndex = 0;
-            this.i_button.Text = "수입";
-            this.i_button.UseVisualStyleBackColor = true;
-            this.i_button.Click += new System.EventHandler(this.i_button_Click);
-            // 
-            // o_button
-            // 
-            this.o_button.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.o_button.Location = new System.Drawing.Point(189, 3);
-            this.o_button.Name = "o_button";
-            this.o_button.Size = new System.Drawing.Size(181, 73);
-            this.o_button.TabIndex = 1;
-            this.o_button.Text = "지출";
-            this.o_button.UseVisualStyleBackColor = true;
-            this.o_button.Click += new System.EventHandler(this.o_button_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 374F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 97);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 56);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(373, 341);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(373, 385);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label1
@@ -92,7 +70,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(92, 9);
+            this.label1.Location = new System.Drawing.Point(93, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 33);
             this.label1.TabIndex = 0;
@@ -111,22 +89,22 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(367, 282);
+            this.chart1.Size = new System.Drawing.Size(369, 326);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.i_button, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.o_button, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.42627F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.57372F));
+            this.tableLayoutPanel2.Controls.Add(this.o_rbtn, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.i_rbtn, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 23);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(373, 79);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(373, 27);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label2
@@ -200,13 +178,35 @@
             // 
             // r_button
             // 
-            this.r_button.Location = new System.Drawing.Point(153, 444);
+            this.r_button.Location = new System.Drawing.Point(156, 443);
             this.r_button.Name = "r_button";
             this.r_button.Size = new System.Drawing.Size(75, 23);
             this.r_button.TabIndex = 7;
             this.r_button.Text = "새로고침";
             this.r_button.UseVisualStyleBackColor = true;
             this.r_button.Click += new System.EventHandler(this.r_button_Click);
+            // 
+            // i_rbtn
+            // 
+            this.i_rbtn.AutoSize = true;
+            this.i_rbtn.Location = new System.Drawing.Point(3, 3);
+            this.i_rbtn.Name = "i_rbtn";
+            this.i_rbtn.Size = new System.Drawing.Size(58, 19);
+            this.i_rbtn.TabIndex = 8;
+            this.i_rbtn.TabStop = true;
+            this.i_rbtn.Text = "수입";
+            this.i_rbtn.UseVisualStyleBackColor = true;
+            // 
+            // o_rbtn
+            // 
+            this.o_rbtn.AutoSize = true;
+            this.o_rbtn.Location = new System.Drawing.Point(67, 3);
+            this.o_rbtn.Name = "o_rbtn";
+            this.o_rbtn.Size = new System.Drawing.Size(58, 19);
+            this.o_rbtn.TabIndex = 9;
+            this.o_rbtn.TabStop = true;
+            this.o_rbtn.Text = "지출";
+            this.o_rbtn.UseVisualStyleBackColor = true;
             // 
             // FormR
             // 
@@ -220,11 +220,12 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormR";
-            this.Text = "월별 리포트 보고서";
+            this.Text = "월별 내역 보고서";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
@@ -233,9 +234,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button i_button;
-        private System.Windows.Forms.Button o_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
@@ -247,6 +245,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button r_button;
+        private System.Windows.Forms.RadioButton o_rbtn;
+        private System.Windows.Forms.RadioButton i_rbtn;
     }
 }
 
