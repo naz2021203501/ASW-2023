@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartReport = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -73,18 +73,18 @@
             // 
             // chartReport
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartReport.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartReport.ChartAreas.Add(chartArea2);
             this.chartReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartReport.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chartReport.Legends.Add(legend2);
             this.chartReport.Location = new System.Drawing.Point(4, 55);
             this.chartReport.Name = "chartReport";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartReport.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartReport.Series.Add(series2);
             this.chartReport.Size = new System.Drawing.Size(373, 282);
             this.chartReport.TabIndex = 1;
             this.chartReport.Text = "chart";
@@ -301,7 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 494);
+            this.ClientSize = new System.Drawing.Size(972, 494);
             this.Controls.Add(this.comparison2);
             this.Controls.Add(this.lblComparison);
             this.Controls.Add(this.max_o);
