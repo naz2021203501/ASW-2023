@@ -28,16 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartReport = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblComparison = new System.Windows.Forms.Label();
-            this.lblMaxOutcome = new System.Windows.Forms.Label();
-            this.lblMaxIncome = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.rbtnIncome = new System.Windows.Forms.RadioButton();
@@ -48,9 +44,15 @@
             this.cboxYear = new System.Windows.Forms.ComboBox();
             this.cboxMonth = new System.Windows.Forms.ComboBox();
             this.lblYear = new System.Windows.Forms.Label();
+            this.max_i = new System.Windows.Forms.Label();
+            this.max_o = new System.Windows.Forms.Label();
+            this.comparison1 = new System.Windows.Forms.Label();
+            this.lblMaxIncome = new System.Windows.Forms.Label();
+            this.lblMaxOutcome = new System.Windows.Forms.Label();
+            this.lblComparison = new System.Windows.Forms.Label();
+            this.comparison2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartReport)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +61,7 @@
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 376F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 379F));
             this.tableLayoutPanel1.Controls.Add(this.chartReport, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 114);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,19 +73,19 @@
             // 
             // chartReport
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartReport.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chartReport.ChartAreas.Add(chartArea1);
             this.chartReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.chartReport.Legends.Add(legend5);
+            legend1.Name = "Legend1";
+            this.chartReport.Legends.Add(legend1);
             this.chartReport.Location = new System.Drawing.Point(4, 55);
             this.chartReport.Name = "chartReport";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartReport.Series.Add(series5);
-            this.chartReport.Size = new System.Drawing.Size(370, 282);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartReport.Series.Add(series1);
+            this.chartReport.Size = new System.Drawing.Size(373, 282);
             this.chartReport.TabIndex = 1;
             this.chartReport.Text = "chart";
             // 
@@ -91,68 +93,19 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTitle.Location = new System.Drawing.Point(66, 26);
+            this.lblTitle.Location = new System.Drawing.Point(59, 33);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(290, 33);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "<Monthly Report>";
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.lblComparison, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.lblMaxOutcome, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.lblMaxIncome, 0, 0);
-            this.tableLayoutPanel3.Cursor = System.Windows.Forms.Cursors.SizeNS;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(410, 114);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(377, 362);
-            this.tableLayoutPanel3.TabIndex = 5;
-            // 
-            // lblComparison
-            // 
-            this.lblComparison.AutoSize = true;
-            this.lblComparison.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblComparison.Location = new System.Drawing.Point(4, 241);
-            this.lblComparison.Name = "lblComparison";
-            this.lblComparison.Size = new System.Drawing.Size(106, 18);
-            this.lblComparison.TabIndex = 2;
-            this.lblComparison.Text = "Comparison";
-            // 
-            // lblMaxOutcome
-            // 
-            this.lblMaxOutcome.AutoSize = true;
-            this.lblMaxOutcome.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMaxOutcome.Location = new System.Drawing.Point(4, 121);
-            this.lblMaxOutcome.Name = "lblMaxOutcome";
-            this.lblMaxOutcome.Size = new System.Drawing.Size(123, 18);
-            this.lblMaxOutcome.TabIndex = 1;
-            this.lblMaxOutcome.Text = "Max Outcome";
-            // 
-            // lblMaxIncome
-            // 
-            this.lblMaxIncome.AutoSize = true;
-            this.lblMaxIncome.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblMaxIncome.Location = new System.Drawing.Point(4, 1);
-            this.lblMaxIncome.Name = "lblMaxIncome";
-            this.lblMaxIncome.Size = new System.Drawing.Size(108, 18);
-            this.lblMaxIncome.TabIndex = 0;
-            this.lblMaxIncome.Text = "Max Income";
-            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDate.Location = new System.Drawing.Point(552, 71);
+            this.lblDate.Location = new System.Drawing.Point(5, 4);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(81, 18);
+            this.lblDate.Size = new System.Drawing.Size(82, 19);
             this.lblDate.TabIndex = 6;
             this.lblDate.Text = "[ date ]";
             // 
@@ -221,7 +174,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.50867F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.49133F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel4.Controls.Add(this.lblMonth, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboxYear, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.cboxMonth, 3, 0);
@@ -238,7 +191,7 @@
             // 
             this.lblMonth.AutoSize = true;
             this.lblMonth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMonth.Location = new System.Drawing.Point(183, 0);
+            this.lblMonth.Location = new System.Drawing.Point(180, 0);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(93, 31);
             this.lblMonth.TabIndex = 3;
@@ -249,18 +202,18 @@
             // 
             this.cboxYear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboxYear.FormattingEnabled = true;
-            this.cboxYear.Location = new System.Drawing.Point(83, 3);
+            this.cboxYear.Location = new System.Drawing.Point(82, 3);
             this.cboxYear.Name = "cboxYear";
-            this.cboxYear.Size = new System.Drawing.Size(94, 23);
+            this.cboxYear.Size = new System.Drawing.Size(92, 23);
             this.cboxYear.TabIndex = 0;
             // 
             // cboxMonth
             // 
             this.cboxMonth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboxMonth.FormattingEnabled = true;
-            this.cboxMonth.Location = new System.Drawing.Point(282, 3);
+            this.cboxMonth.Location = new System.Drawing.Point(279, 3);
             this.cboxMonth.Name = "cboxMonth";
-            this.cboxMonth.Size = new System.Drawing.Size(88, 23);
+            this.cboxMonth.Size = new System.Drawing.Size(91, 23);
             this.cboxMonth.TabIndex = 1;
             // 
             // lblYear
@@ -269,20 +222,96 @@
             this.lblYear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblYear.Location = new System.Drawing.Point(3, 0);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(74, 31);
+            this.lblYear.Size = new System.Drawing.Size(73, 31);
             this.lblYear.TabIndex = 2;
             this.lblYear.Text = "Year";
             this.lblYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // max_i
+            // 
+            this.max_i.AutoSize = true;
+            this.max_i.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.max_i.Location = new System.Drawing.Point(423, 151);
+            this.max_i.Name = "max_i";
+            this.max_i.Size = new System.Drawing.Size(69, 24);
+            this.max_i.TabIndex = 10;
+            this.max_i.Text = "label1";
+            // 
+            // max_o
+            // 
+            this.max_o.AutoSize = true;
+            this.max_o.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.max_o.Location = new System.Drawing.Point(423, 268);
+            this.max_o.Name = "max_o";
+            this.max_o.Size = new System.Drawing.Size(69, 24);
+            this.max_o.TabIndex = 11;
+            this.max_o.Text = "label2";
+            // 
+            // comparison1
+            // 
+            this.comparison1.AutoSize = true;
+            this.comparison1.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.comparison1.Location = new System.Drawing.Point(425, 389);
+            this.comparison1.Name = "comparison1";
+            this.comparison1.Size = new System.Drawing.Size(69, 24);
+            this.comparison1.TabIndex = 12;
+            this.comparison1.Text = "label3";
+            // 
+            // lblMaxIncome
+            // 
+            this.lblMaxIncome.AutoSize = true;
+            this.lblMaxIncome.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMaxIncome.Location = new System.Drawing.Point(423, 114);
+            this.lblMaxIncome.Name = "lblMaxIncome";
+            this.lblMaxIncome.Size = new System.Drawing.Size(109, 19);
+            this.lblMaxIncome.TabIndex = 0;
+            this.lblMaxIncome.Text = "Max Income";
+            // 
+            // lblMaxOutcome
+            // 
+            this.lblMaxOutcome.AutoSize = true;
+            this.lblMaxOutcome.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblMaxOutcome.Location = new System.Drawing.Point(423, 234);
+            this.lblMaxOutcome.Name = "lblMaxOutcome";
+            this.lblMaxOutcome.Size = new System.Drawing.Size(124, 19);
+            this.lblMaxOutcome.TabIndex = 1;
+            this.lblMaxOutcome.Text = "Max Outcome";
+            // 
+            // lblComparison
+            // 
+            this.lblComparison.AutoSize = true;
+            this.lblComparison.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblComparison.Location = new System.Drawing.Point(425, 352);
+            this.lblComparison.Name = "lblComparison";
+            this.lblComparison.Size = new System.Drawing.Size(107, 19);
+            this.lblComparison.TabIndex = 2;
+            this.lblComparison.Text = "Comparison";
+            // 
+            // comparison2
+            // 
+            this.comparison2.AutoSize = true;
+            this.comparison2.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.comparison2.Location = new System.Drawing.Point(425, 413);
+            this.comparison2.Name = "comparison2";
+            this.comparison2.Size = new System.Drawing.Size(69, 24);
+            this.comparison2.TabIndex = 13;
+            this.comparison2.Text = "label3";
             // 
             // FormR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 494);
+            this.Controls.Add(this.comparison2);
+            this.Controls.Add(this.lblComparison);
+            this.Controls.Add(this.max_o);
+            this.Controls.Add(this.lblMaxOutcome);
+            this.Controls.Add(this.max_i);
+            this.Controls.Add(this.lblMaxIncome);
+            this.Controls.Add(this.comparison1);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -290,8 +319,6 @@
             this.Text = "월별 리포트 보고서";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartReport)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -305,10 +332,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartReport;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label lblComparison;
-        private System.Windows.Forms.Label lblMaxOutcome;
-        private System.Windows.Forms.Label lblMaxIncome;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.RadioButton rbtnOutcome;
@@ -319,6 +342,13 @@
         private System.Windows.Forms.ComboBox cboxYear;
         private System.Windows.Forms.ComboBox cboxMonth;
         private System.Windows.Forms.Label lblYear;
+        private System.Windows.Forms.Label max_i;
+        private System.Windows.Forms.Label max_o;
+        private System.Windows.Forms.Label comparison1;
+        private System.Windows.Forms.Label lblMaxIncome;
+        private System.Windows.Forms.Label lblMaxOutcome;
+        private System.Windows.Forms.Label lblComparison;
+        private System.Windows.Forms.Label comparison2;
     }
 }
 

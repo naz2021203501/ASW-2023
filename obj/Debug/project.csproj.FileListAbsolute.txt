@@ -64,7 +64,6 @@ C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Memory.xml
 C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\진\Source\Repos\ASW-2023E\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\project.csproj.CopyComplete
-C:\Users\진\Source\Repos\ASW-2023E\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\sjmra\Desktop\git\ASW-2023\obj\Debug\project.csproj.AssemblyReference.cache
 C:\Users\sjmra\Desktop\git\ASW-2023\obj\Debug\project.csproj.SuggestedBindingRedirects.cache
 C:\Users\sjmra\Desktop\git\ASW-2023\obj\Debug\project.FormBudget.resources
@@ -111,3 +110,15 @@ C:\Users\sjmra\Desktop\git\ASW-2023\bin\Debug\System.Memory.xml
 C:\Users\sjmra\Desktop\git\ASW-2023\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\sjmra\Desktop\git\ASW-2023\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\sjmra\Desktop\git\ASW-2023\obj\Debug\project.csproj.CopyComplete
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\selenium-manager\linux\selenium-manager
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\selenium-manager\macos\selenium-manager
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\selenium-manager\windows\selenium-manager.exe
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.dll
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\SeleniumExtras.WaitHelpers.dll
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\WebDriver.dll
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\WebDriver.Support.dll
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.pdb
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.xml
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\진\source\repos\ASW-2023E\bin\Debug\LiveCharts.Wpf.xml
